@@ -14,9 +14,15 @@ jobs:
       - uses: actions/setup-dotnet@v1
         with:
           dotnet-version: '5.0'
-      - run: echo $GITHUB_ENV
-      - run: echo "BITBUCKET_COMMIT_SHORT=$(echo $GITHUB_SHA | cut -c1-7)" >> $GITHUB_ENV
-      - run: echo $BITBUCKET_COMMIT_SHORT
+      
+      - uses: actions/github-script@v3
+        with:
+          script: |
+            core.exportVariable('SHA', process.env.GITHUB_SHA.substring(0, 7));
+            core.exportVariable('BRANCH', process.env.GITHUB_REF.split('/').pop());
+      
+      - run: echo "$BRANCH - $SHA"
+      
       - run: dotnet test TestProject/TestProject.csproj
       - run: dotnet build
    
