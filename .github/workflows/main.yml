@@ -11,22 +11,30 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      # - uses: actions/setup-dotnet@v1
-      #   with:
-      #     dotnet-version: '5.0'
-      # - uses: ./.github/actions/hello
-      #   with:
-      #     foo: bar
-      - run: dotnet --version
+      - uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: '5.0'
+      - run: echo $GITHUB_ENV
+      - run: echo "FOO=BAR" >> $GITHUB_ENV
+      - run: echo $FOO
+      - run: dotnet test TestProject/TestProject.csproj
       - run: dotnet build
-        
+   
+# # send to octopus
+# - export BITBUCKET_COMMIT_SHORT=$(echo $BITBUCKET_COMMIT | cut -c1-7)
+# - export BITBUCKET_BRANCH_SLUG=$(echo $BITBUCKET_BRANCH | sed 's|/|-|g')
+# - export ZIP=ManagerApi.1.0.$BITBUCKET_BUILD_NUMBER-$BITBUCKET_COMMIT_SHORT-$BITBUCKET_BRANCH_SLUG.zip
+# - cd publish
+# - zip -r $ZIP .
+# - curl -i -X POST $OCTOPUS_CLI_SERVER/api/packages/raw?replace=true -H "X-Octopus-ApiKey:$OCTOCLOUD" -F "data=@$ZIP" -f
+  
 
 # docker run nginx      
 # docker run mac2000/nginx      
 # docker run example.com/mac2000/nginx      
 
 # var steps = [ { run: "echo hello" } ]
-# child_proccess.start("bin/foo", ["sfd", "sdf"], "/workdir/tmp", env)
+# child_proccess.start("bin/foo", ["sfd", "sdf"], "/workdir/tmp", "/workdir/env.txt")
 
 # /workdir
 #    |- /bin <- added to $PATH
