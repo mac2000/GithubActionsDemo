@@ -10,8 +10,10 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - run: git clone https://github.com/mac2000/githubactionsdemo .
+      - uses: actions/checkout@v2
+      - run: ls -la .
       - run: dotnet build
+        
 
       
 
