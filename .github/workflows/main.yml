@@ -11,11 +11,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+      - uses: ./.github/actions/hello
       - run: ls -la .
       - run: dotnet build
         
 
-      
+# docker run nginx      
+# docker run mac2000/nginx      
+# docker run example.com/mac2000/nginx      
 
 # var steps = [ { run: "echo hello" } ]
 # child_proccess.start("bin/foo", ["sfd", "sdf"], "/temp", env)
