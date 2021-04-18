@@ -11,11 +11,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: git clone https://github.com/mac2000/githubactionsdemo .
-  test:
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-      - run: ls -la .
+      - run: dotnet build
+
       
 
 # var steps = [ { run: "echo hello" } ]
