@@ -8,13 +8,18 @@ on:
 
 jobs:
   build:
+    env:
+      ASP_ENV: prod
     runs-on: ubuntu-latest
     steps:
       - run: echo mac was here
       - run: env
       - run: ls -la .
       - run: export FOO=BAR
-      - run: ls -la .
+      - name: hello world
+        env:
+          FOO: bar
+        run: echo "$ASP_ENV - $FOO"
       - run: |
           export FOO=BAR
           echo $FOO
