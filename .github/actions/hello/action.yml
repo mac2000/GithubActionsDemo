@@ -1,5 +1,9 @@
 name: 'Hello World'
 description: 'Greet someone and record the time'
+inputs:
+  foo:
+    description: 'Who to greet'
+    required: true
 runs:
   using: 'node12'
   main: 'index.js'

@@ -12,6 +12,8 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - uses: ./.github/actions/hello
+        with:
+          foo: bar
       - run: ls -la .
       - run: dotnet build
         
@@ -21,4 +23,9 @@ jobs:
 # docker run example.com/mac2000/nginx      
 
 # var steps = [ { run: "echo hello" } ]
-# child_proccess.start("bin/foo", ["sfd", "sdf"], "/temp", env)
+# child_proccess.start("bin/foo", ["sfd", "sdf"], "/workdir/tmp", env)
+
+# /workdir
+#    |- /bin <- added to $PATH
+#    |- /etc
+#    |- /tmp <- we are here

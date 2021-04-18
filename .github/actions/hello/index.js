@@ -1,6 +1,14 @@
+// const core = require('@actions/core');
+// const github = require('@actions/github');
 const child_process = require('child_process')
 
-console.log('HELLO WORLD');
+// const nameToGreet = core.getInput('foo');
 
-const stdout = child_process.execSync('ls -la .', {encoding: 'utf-8'}).toString()
-console.log(stdout)
+console.log(JSON.stringify(Object.keys(process.env)))
+
+console.log('HELLO WORLD: ' + process.env.INPUT_FOO);
+
+
+// const appSettings = require('appsettings.json');
+// appSettings.version = 'foo'
+// fs.saveFile('appsettings.json', appSettings)
