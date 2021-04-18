@@ -14,5 +14,6 @@ jobs:
       - run: echo mac was here
       - run: env
       - run: ls -la .
+      - run: dotnet build
 
 # var steps = [ { run: "echo hello" } ]
