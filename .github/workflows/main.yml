@@ -8,23 +8,14 @@ on:
 
 jobs:
   build:
-    env:
-      ASP_ENV: prod
     runs-on: ubuntu-latest
     steps:
-      - run: echo mac was here
-      - run: env
-      - run: ls -la .
-      - run: export FOO=BAR
-      - name: hello world
-        env:
-          FOO: bar
-        run: echo "$ASP_ENV - $FOO"
-      - run: |
-          export FOO=BAR
-          echo $FOO
-          git clone https://github.com/mac2000/githubactionsdemo .
-          dotnet build
+      - run: echo build
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo test
+      
 
 # var steps = [ { run: "echo hello" } ]
 # child_proccess.start("bin/foo", ["sfd", "sdf"], "/temp", env)
