@@ -10,6 +10,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+      - run: apt-get update && apt-get install -y curl
       - run: echo Hello, world!
       - run: echo mac was here
       - run: env
