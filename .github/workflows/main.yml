@@ -14,10 +14,12 @@ jobs:
       - run: env
       - run: ls -la .
       - run: export FOO=BAR
-      - run: git clone https://github.com/mac2000/githubactionsdemo .
       - run: ls -la .
-      - run: echo $FOO
-      - run: dotnet build
+      - run: |
+          export FOO=BAR
+          echo $FOO
+          git clone https://github.com/mac2000/githubactionsdemo .
+          dotnet build
 
 # var steps = [ { run: "echo hello" } ]
 # child_proccess.start("bin/foo", ["sfd", "sdf"], "/temp", env)
